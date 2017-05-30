@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_cidade_cadastro"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.usuario.cookiereader.control.CidadeCadastro">
+
+    <Button
+        android:text="Voltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/bnt_back"
+        android:onClick="sair" />
+
+    <TextView
+        android:text="Manutenção de Cidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp"
+        android:id="@+id/textView3"
+        android:textSize="18sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:layout_below="@+id/bnt_back"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="18dp"
+        android:id="@+id/scroll1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:text="Codigo: "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/view"
+                android:textSize="20sp" />
+
+            <TextView
+                android:text="codigo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editCd"
+                android:textSize="20sp"
+                android:paddingTop="5dp" />
+
+            <TextView
+                android:text="Nome:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:textSize="20sp"
+                android:paddingTop="5dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="Nome"
+                android:ems="10"
+                android:id="@+id/editNome" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:id="@+id/spinUf" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:layout_below="@+id/scroll1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="19dp">
+
+        <Button
+            android:text="Inserir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnInserir"
+            android:layout_weight="0.05"
+            android:onClick="inserir"
+            android:textSize="12sp"/>
+
+        <Button
+            android:text="Alterar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAlterar"
+            android:layout_weight="0.05"
+            android:onClick="alterar"
+            android:textSize="12sp"/>
+
+        <Button
+            android:text="Ver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnVer"
+            android:layout_weight="0.05"
+            android:onClick="ver"
+            android:textSize="12sp"/>
+
+        <Button
+            android:text="Deletar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnDeletar"
+            android:layout_weight="0.05"
+            android:onClick="deletar"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:text="Limpar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLimpar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="limpar"
+        android:layout_below="@+id/bnt_back" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listCidade"
+        android:headerDividersEnabled="false"
+        android:choiceMode="singleChoice"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout2" />
+
+</RelativeLayout>
