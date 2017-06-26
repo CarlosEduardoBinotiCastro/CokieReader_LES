@@ -92,7 +92,7 @@
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/editSenha"
-            android:layout_weight="0.10" />
+            android:layout_weight="0.16" />
 
     </LinearLayout>
 
@@ -118,7 +118,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Nome"
             android:ems="10"
             android:id="@+id/editNome" />
 
@@ -145,7 +144,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="CPF"
             android:ems="10"
             android:id="@+id/editCpf" />
 
@@ -171,7 +169,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Login"
             android:ems="10"
             android:id="@+id/editLogin" />
     </LinearLayout>
@@ -213,9 +210,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout2"
         android:layout_below="@+id/linearComboBox"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="19dp">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <Button
             android:text="Inserir"
@@ -224,7 +220,7 @@
             android:id="@+id/btnInserir"
             android:layout_weight="0.05"
             android:onClick="inserir"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
 
         <Button
             android:text="Alterar"
@@ -233,7 +229,7 @@
             android:id="@+id/btnAlterar"
             android:layout_weight="0.05"
             android:onClick="alterar"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
 
         <Button
             android:text="Ver"
@@ -242,7 +238,7 @@
             android:id="@+id/btnVer"
             android:layout_weight="0.05"
             android:onClick="ver"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
 
         <Button
             android:text="Deletar"
@@ -251,7 +247,7 @@
             android:id="@+id/btnDeletar"
             android:layout_weight="0.05"
             android:onClick="deletar"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
 
     </LinearLayout>
 

@@ -47,6 +47,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
             <TextView
                 android:text="Codigo: "
                 android:layout_width="match_parent"
@@ -55,46 +60,64 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:text="codigo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/editCd"
-                android:textSize="20sp"
-                android:paddingTop="5dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:textSize="20sp" />
 
-            <TextView
-                android:text="Nome:"
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView4"
-                android:textSize="20sp"
-                android:paddingTop="5dp" />
+                android:orientation="horizontal" >
 
-            <EditText
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:text="Nome:"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editNome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text="Nome"
-                android:ems="10"
-                android:id="@+id/editNome" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/barras"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Barras: "
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editBarras"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:id="@+id/spinEmpresa" />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout2">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
 
         </LinearLayout>
     </ScrollView>
@@ -105,8 +128,7 @@
         android:id="@+id/linearLayout2"
         android:layout_below="@+id/scroll1"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="19dp">
+        android:layout_alignParentStart="true">
 
         <Button
             android:text="Inserir"
@@ -115,7 +137,7 @@
             android:id="@+id/btnInserir"
             android:layout_weight="0.05"
             android:onClick="inserir"
-            android:textSize="12sp"/>
+            android:textSize="10sp"/>
 
         <Button
             android:text="Alterar"
@@ -124,7 +146,7 @@
             android:id="@+id/btnAlterar"
             android:layout_weight="0.05"
             android:onClick="alterar"
-            android:textSize="12sp"/>
+            android:textSize="10sp"/>
 
         <Button
             android:text="Ver"
@@ -133,7 +155,7 @@
             android:id="@+id/btnVer"
             android:layout_weight="0.05"
             android:onClick="ver"
-            android:textSize="12sp"/>
+            android:textSize="10sp"/>
 
         <Button
             android:text="Deletar"
@@ -142,7 +164,7 @@
             android:id="@+id/btnDeletar"
             android:layout_weight="0.05"
             android:onClick="deletar"
-            android:textSize="12sp"/>
+            android:textSize="10sp"/>
 
     </LinearLayout>
 
@@ -157,14 +179,37 @@
         android:layout_below="@+id/bnt_back" />
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/listBiscoito"
-        android:headerDividersEnabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:choiceMode="singleChoice"
-        android:layout_alignParentBottom="true"
+        android:headerDividersEnabled="false"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="nutriente"
+        android:text="Nutrientes"
+        android:layout_below="@+id/linearLayout2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearLayout2" />
+        android:layout_toStartOf="@+id/btnClear"
+        android:layout_toLeftOf="@+id/btnClear" />
+
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/listBiscoito"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@+id/textView3"
+        android:layout_toRightOf="@+id/textView3"
+        android:onClick="descelecionar"
+        android:text="Limpar" />
 
 </RelativeLayout>

@@ -8,6 +8,8 @@ public class Biscoito {
 
 	private String nome;
 
+    private String cdBarras;
+
 	private int cdEmpresa;
 
 	private ArrayList<BiscoitoNutriente> biscoitoNutriente = new ArrayList();
@@ -34,6 +36,14 @@ public class Biscoito {
 
     public void setCdEmpresa(int empresa) {
         this.cdEmpresa = empresa;
+    }
+
+    public String getCdBarras() {
+        return cdBarras;
+    }
+
+    public void setCdBarras(String cdBarras) {
+        this.cdBarras = cdBarras;
     }
 
     public ArrayList<BiscoitoNutriente> getBiscoitoNutriente() {

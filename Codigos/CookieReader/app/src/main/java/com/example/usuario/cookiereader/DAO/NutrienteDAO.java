@@ -50,6 +50,17 @@ public class NutrienteDAO {
         conn.insert("Nutriente", null, values);
     }
 
+    public Nutrientes buscar(int nutriente){
+        Nutrientes nutri = new Nutrientes();
+
+        Cursor cursor = conn.rawQuery("select * from Nutriente where _cdNutriente = '"+Integer.toString(nutriente)+"'", null);
+        if(cursor.moveToFirst()) {
+            nutri.setCdNutriente(cursor.getInt(cursor.getColumnIndex("_cdNutriente")));
+            nutri.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+        }
+        return  nutri;
+    }
+
 
     public List<Nutrientes> BuscarTodos(){
         try{

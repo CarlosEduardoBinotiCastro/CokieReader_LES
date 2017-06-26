@@ -4,9 +4,11 @@ public class DCNTpeso {
 
 	private int peso;
 
-	private Nutrientes nutrientes;
+	private int cdNutriente;
 
-	private com.example.usuario.cookiereader.domain.dcnt dcnt;
+	private int cdDcnt;
+
+    private  String nomeNutriente;
 
 
     public int getPeso() {
@@ -17,26 +19,33 @@ public class DCNTpeso {
         this.peso = peso;
     }
 
-    public Nutrientes getNutrientes() {
-        return nutrientes;
+    public int getCdNutriente() {
+        return cdNutriente;
     }
 
-    public void setNutrientes(Nutrientes nutrientes) {
-        this.nutrientes = nutrientes;
+    public void setCdNutriente(int cdNutriente) {
+        this.cdNutriente = cdNutriente;
     }
 
-    public com.example.usuario.cookiereader.domain.dcnt getDcnt() {
-        return dcnt;
+    public int getCdDcnt() {
+        return cdDcnt;
     }
 
-    public void setDcnt(com.example.usuario.cookiereader.domain.dcnt dcnt) {
-        this.dcnt = dcnt;
+    public void setCdDcnt(int cdDcnt) {
+        this.cdDcnt = cdDcnt;
     }
-        
-    
-      @Override
+
+    public String getNomeNutriente() {
+        return nomeNutriente;
+    }
+
+    public void setNomeNutriente(String nomeNutriente) {
+        this.nomeNutriente = nomeNutriente;
+    }
+
+    @Override
     public String toString(){
-            return Integer.toString(this.getPeso());
+            return  this.nomeNutriente +" / Peso: "+ Integer.toString(this.getPeso());
     } 
 
 }

@@ -4,9 +4,11 @@ public class BiscoitoNutriente {
 
 	private float quant;
 
-	private Biscoito biscoito;
+	private int cdBiscoito;
 
-	private Nutrientes nutrientes;
+	private int cdNutrientes;
+
+    private String nomeNutriente;
 
         
     public float getQuant() {
@@ -17,25 +19,33 @@ public class BiscoitoNutriente {
         this.quant = quant;
     }
 
-    public Biscoito getBiscoito() {
-        return biscoito;
+    public void setCdBiscoito(int cdBiscoito) {
+        this.cdBiscoito = cdBiscoito;
     }
 
-    public void setBiscoito(Biscoito biscoito) {
-        this.biscoito = biscoito;
+    public int getCdBiscoito() {
+        return cdBiscoito;
     }
 
-    public Nutrientes getNutrientes() {
-        return nutrientes;
+    public int getCdNutrientes() {
+        return cdNutrientes;
     }
 
-    public void setNutrientes(Nutrientes nutrientes) {
-        this.nutrientes = nutrientes;
+    public void setCdNutrientes(int cdNutrientes) {
+        this.cdNutrientes = cdNutrientes;
     }
-        
-        @Override
+
+    public String getNomeNutriente() {
+        return nomeNutriente;
+    }
+
+    public void setNomeNutriente(String nomeNutriente) {
+        this.nomeNutriente = nomeNutriente;
+    }
+
+    @Override
     public String toString(){
-            return Float.toString(this.getQuant());
+            return nomeNutriente +" / "+ String.valueOf(quant) + " g";
     }  
         
 }

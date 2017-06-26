@@ -29,7 +29,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="12dp"
         android:id="@+id/textView3"
-        android:textSize="26sp" />
+        android:textSize="18sp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -56,7 +56,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="Nome"
                 android:ems="10"
                 android:id="@+id/editNome" />
 
@@ -71,7 +70,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="Sigla"
                 android:ems="10"
                 android:id="@+id/editSigla" />
         </LinearLayout>
@@ -92,7 +90,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnInserir"
             android:layout_weight="0.05"
-            android:onClick="inserir" />
+            android:onClick="inserir"
+            android:textSize="10sp"/>
 
         <Button
             android:text="Alterar"
@@ -100,7 +99,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnAlterar"
             android:layout_weight="0.05"
-            android:onClick="alterar" />
+            android:onClick="alterar"
+            android:textSize="10sp"/>
 
         <Button
             android:text="Ver"
@@ -108,7 +108,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnVer"
             android:layout_weight="0.05"
-            android:onClick="ver" />
+            android:onClick="ver"
+            android:textSize="10sp"/>
 
         <Button
             android:text="Deletar"
@@ -116,7 +117,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnDeletar"
             android:layout_weight="0.05"
-            android:onClick="deletar" />
+            android:onClick="deletar"
+            android:textSize="10sp"/>
 
     </LinearLayout>
 
@@ -143,10 +145,10 @@
         android:text="Limpar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
-        android:layout_alignLeft="@+id/bnt_back"
-        android:layout_alignStart="@+id/bnt_back"
         android:id="@+id/btnLimpar"
-        android:onClick="limpar" />
+        android:onClick="limpar"
+        android:layout_below="@+id/bnt_back"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

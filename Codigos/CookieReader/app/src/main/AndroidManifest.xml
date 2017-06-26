@@ -25,7 +25,8 @@
         <activity android:name=".control.CidadeCadastro" />
         <activity android:name=".control.EmpresaCadastro" />
         <activity android:name=".control.UsuarioCadastro" />
-        <activity android:name=".control.BiscoitoCadastro"></activity>
+        <activity android:name=".control.BiscoitoCadastro" />
+        <activity android:name=".control.AssociarPesoDcnt"></activity>
     </application>
 
 </manifest>

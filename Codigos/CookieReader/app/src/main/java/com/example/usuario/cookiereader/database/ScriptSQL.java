@@ -56,7 +56,9 @@ public class ScriptSQL {
           String sql = ("CREATE TABLE IF NOT EXISTS Biscoito " +
                   "( _cdBiscoito INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                   " nome TEXT NOT NULL, " +
-                  " cdEmpresa INTEGER NOT NULL);");
+                  " cdBarras TEXT NOT NULL, " +
+                  " cdEmpresa INTEGER NOT NULL," +
+                  " CONSTRAINT cdBarras_unico UNIQUE (cdBarras));");
 
           return sql;
      }
@@ -85,7 +87,9 @@ public class ScriptSQL {
                   "  cdBiscoito         INTEGER      NOT NULL, " +
                   "  cdNutriente        INTEGER      NOT NULL, " +
                   "  quant              REAL         NOT NULL, " +
-                  "  PRIMARY KEY (cdBiscoito, cdNutriente));";
+                  "  PRIMARY KEY (cdBiscoito, cdNutriente)," +
+                  "  FOREIGN KEY (cdBiscoito) references Biscoito(_cdBiscoito) ON DELETE CASCADE," +
+                  "  FOREIGN KEY (cdNutriente) references Nutriente(_cdNutriente) ON DELETE CASCADE);";
 
           return sql;
      }
@@ -96,7 +100,9 @@ public class ScriptSQL {
                   "  cdDcnt         INTEGER      NOT NULL, " +
                   "  cdNutriente    INTEGER      NOT NULL, " +
                   "  peso           INTEGER      NOT NULL, " +
-                  "  PRIMARY KEY (cdDcnt, cdNutriente));";
+                  "  PRIMARY KEY (cdDcnt, cdNutriente)," +
+                  "  FOREIGN KEY (cdDcnt) references dcnt(_cdDcnt) ON DELETE CASCADE," +
+                  "  FOREIGN KEY (cdNutriente) references Nutriente(_cdNutriente) ON DELETE CASCADE);";
 
           return sql;
      }

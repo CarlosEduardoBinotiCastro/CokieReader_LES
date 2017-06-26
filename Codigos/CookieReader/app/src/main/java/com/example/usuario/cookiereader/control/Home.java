@@ -1,11 +1,13 @@
 package com.example.usuario.cookiereader.control;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,12 +18,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.usuario.cookiereader.Misc.FirstLogin;
 import com.example.usuario.cookiereader.Misc.Sessao;
 import com.example.usuario.cookiereader.R;
 import com.example.usuario.cookiereader.database.DataBase;
 import com.example.usuario.cookiereader.domain.Usuario;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,6 +34,7 @@ public class Home extends AppCompatActivity
     private DataBase dataBase;
     private SQLiteDatabase conn;
     private TextView textViewNome;
+    final Activity activity = this;
     Sessao sessao = new Sessao();
 
     @Override
@@ -123,10 +129,43 @@ public class Home extends AppCompatActivity
             startActivity(biscoito);
         }else if (id == R.id.nav_sair) {
             this.finish();
+        }else if (id == R.id.nav_peso) {
+            Intent peso = new Intent(this, AssociarPesoDcnt.class);
+            startActivity(peso);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void scan(View view){
+        IntentIntegrator integrator = new IntentIntegrator(activity);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+        integrator.setPrompt("Scan");
+        integrator.setCameraId(0);
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(false);
+        integrator.initiateScan();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                Log.d("MainActivity", "Cancelled scan");
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                Log.d("MainActivity", "Scanned");
+                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+            }
+        } else {
+            // This is important, otherwise the result will not be passed to the fragment
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+
 }

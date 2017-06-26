@@ -28,6 +28,7 @@ public class BiscoitoDAO {
 
         values.put("nome", Biscoito.getNome());
         values.put("cdEmpresa", Biscoito.getCdEmpresa());
+        values.put("cdBarras", Biscoito.getCdBarras());
 
         return values;
 
@@ -59,6 +60,21 @@ public class BiscoitoDAO {
             Biscoito1.setCdBiscoito(cursor.getInt(cursor.getColumnIndex("_cdBiscoito")));
             Biscoito1.setNome(cursor.getString(cursor.getColumnIndex("nome")));
             Biscoito1.setCdEmpresa(cursor.getInt(cursor.getColumnIndex("cdEmpresa")));
+            Biscoito1.setCdBarras(cursor.getString(cursor.getColumnIndex("cdBarras")));
+        }
+        return  Biscoito1;
+    }
+
+
+    public Biscoito buscarUltimo(){
+        Biscoito Biscoito1 = new Biscoito();
+
+        Cursor cursor = conn.rawQuery("SELECT * FROM Biscoito WHERE _cdBiscoito = (SELECT MAX(_cdBiscoito) FROM Biscoito)", null);
+        if(cursor.moveToFirst()) {
+            Biscoito1.setCdBiscoito(cursor.getInt(cursor.getColumnIndex("_cdBiscoito")));
+            Biscoito1.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+            Biscoito1.setCdEmpresa(cursor.getInt(cursor.getColumnIndex("cdEmpresa")));
+            Biscoito1.setCdBarras(cursor.getString(cursor.getColumnIndex("cdBarras")));
         }
         return  Biscoito1;
     }
@@ -83,6 +99,7 @@ public class BiscoitoDAO {
                 Biscoito1.setCdBiscoito(cursor.getInt(cursor.getColumnIndex("_cdBiscoito")));
                 Biscoito1.setCdEmpresa(cursor.getInt(cursor.getColumnIndex("cdEmpresa")));
                 Biscoito1.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+                Biscoito1.setCdBarras(cursor.getString(cursor.getColumnIndex("cdBarras")));
                 Biscoito.add(Biscoito1);
             }while (cursor.moveToNext());
         }
