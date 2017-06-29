@@ -79,22 +79,21 @@
         android:id="@+id/btnDel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btnInserir"
-        android:layout_toEndOf="@+id/btnInserir"
-        android:layout_toRightOf="@+id/btnInserir"
         android:onClick="deletar"
-        android:text="Deletar" />
+        android:text="Deletar"
+        android:layout_below="@+id/editPeso"
+        android:layout_toRightOf="@+id/btnInserir"
+        android:layout_toEndOf="@+id/btnInserir" />
 
     <Button
         android:id="@+id/btnVoltar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btnDel"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_toEndOf="@+id/btnDel"
-        android:layout_toRightOf="@+id/btnDel"
         android:onClick="voltar"
-        android:text="Voltar" />
+        android:text="Voltar"
+        android:layout_below="@+id/editPeso"
+        android:layout_toRightOf="@+id/btnDel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

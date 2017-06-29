@@ -65,6 +65,19 @@ public class BiscoitoDAO {
         return  Biscoito1;
     }
 
+    public Biscoito buscarPorBarras(String cdBarras){
+        Biscoito Biscoito1 = new Biscoito();
+
+        Cursor cursor = conn.rawQuery("select * from Biscoito where cdBarras = '"+cdBarras+"'", null);
+        if(cursor.moveToFirst()) {
+            Biscoito1.setCdBiscoito(cursor.getInt(cursor.getColumnIndex("_cdBiscoito")));
+            Biscoito1.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+            Biscoito1.setCdEmpresa(cursor.getInt(cursor.getColumnIndex("cdEmpresa")));
+            Biscoito1.setCdBarras(cursor.getString(cursor.getColumnIndex("cdBarras")));
+        }
+        return  Biscoito1;
+    }
+
 
     public Biscoito buscarUltimo(){
         Biscoito Biscoito1 = new Biscoito();

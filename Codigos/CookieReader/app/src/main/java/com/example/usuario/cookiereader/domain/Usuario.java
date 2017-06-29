@@ -1,5 +1,7 @@
 package com.example.usuario.cookiereader.domain;
 
+import java.util.Date;
+
 public class Usuario {
 
 	private int cdUsuario;
@@ -13,6 +15,8 @@ public class Usuario {
 	private String cpf;
 
 	private int  cdCidade;
+
+    private String dataSessao;
 
     public int getCdUsuario() {
         return cdUsuario;
@@ -60,6 +64,14 @@ public class Usuario {
 
     public void setCdCidade(int cdCidade) {
         this.cdCidade = cdCidade;
+    }
+
+    public String getDataSessao() {
+        return dataSessao;
+    }
+
+    public void setDataSessao(String dataSessao) {
+        this.dataSessao = dataSessao;
     }
 
     @Override

@@ -11,12 +11,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.usuario.cookiereader.DAO.UsuarioDAO;
 import com.example.usuario.cookiereader.Misc.FirstLogin;
 import com.example.usuario.cookiereader.Misc.Md5;
 import com.example.usuario.cookiereader.Misc.Sessao;
 import com.example.usuario.cookiereader.control.Home;
 import com.example.usuario.cookiereader.database.DataBase;
 import com.example.usuario.cookiereader.domain.Usuario;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class Main extends AppCompatActivity {
 
@@ -65,11 +72,42 @@ public class Main extends AppCompatActivity {
                 user.setLogin(cursor.getString(cursor.getColumnIndex("login")));
                 user.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
                 user.setCpf(cursor.getString(cursor.getColumnIndex("cpf")));
+                user.setDataSessao(cursor.getString(cursor.getColumnIndex("dataSessao")));
 
                 senha = md5.gerarMd5(senha);
 
                 if (senha.equals(user.getSenha())){
                     Sessao sessao = new Sessao();
+                    UsuarioDAO usuarioDAO = new UsuarioDAO(conn);
+
+                    Date data = new Date();
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(data);
+
+                    if(user.getDataSessao() != null){
+                        Calendar calendar = new GregorianCalendar();
+                        SimpleDateFormat oldDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                        Date dt = oldDate.parse(user.getDataSessao());
+                        calendar.setTime(dt);
+
+                        if(cal.after(calendar)){
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                            dateFormat.setTimeZone(cal.getTimeZone());
+                            user.setDataSessao(dateFormat.format(cal.getTime()));
+                            usuarioDAO.alterarData(user);
+                            sessao.setQuantScan(10);
+                        }else{
+
+                        }
+                    }else{
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                        dateFormat.setTimeZone(cal.getTimeZone());
+                        user.setDataSessao(dateFormat.format(cal.getTime()));
+                        usuarioDAO.alterarData(user);
+                        sessao.setQuantScan(10);
+                    }
+
+
                     sessao.logado(user);
 
                     Intent home = new Intent(this, Home.class);

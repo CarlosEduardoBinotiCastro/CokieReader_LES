@@ -31,10 +31,11 @@ public class UsuarioDAO {
         values.put("login", Usuario.getLogin());
         values.put("senha",Usuario.getSenha());
         values.put("cpf", Usuario.getCpf());
-
         return values;
 
     }
+
+
 
     public void excluir(int id)
     {
@@ -48,6 +49,13 @@ public class UsuarioDAO {
 
     }
 
+    public void alterarData(Usuario Usuario)
+    {
+        ContentValues values = new ContentValues();
+        values.put("dataSessao", Usuario.getDataSessao());
+        conn.update("Usuario", values, " _cdUsuario = ? ", new String[]{ String.valueOf( Usuario.getCdUsuario()) } );
+
+    }
     public void inserir(Usuario Usuario)
     {
         ContentValues values = preencheContentValues(Usuario);
@@ -65,6 +73,7 @@ public class UsuarioDAO {
             Usuario1.setCpf(cursor.getString(cursor.getColumnIndex("cpf")));
             Usuario1.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
             Usuario1.setLogin(cursor.getString(cursor.getColumnIndex("login")));
+            Usuario1.setDataSessao(cursor.getString(cursor.getColumnIndex("dataSessao")));
         }
         return  Usuario1;
     }
@@ -81,6 +90,9 @@ public class UsuarioDAO {
 
     }
 
+
+
+
     public List<Usuario> toList(Cursor cursor, SQLiteDatabase db){
         ArrayList<Usuario> Usuarios = new ArrayList<>();
         if(cursor.moveToFirst()){
@@ -92,6 +104,7 @@ public class UsuarioDAO {
                 Usuario1.setCpf(cursor.getString(cursor.getColumnIndex("cpf")));
                 Usuario1.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
                 Usuario1.setLogin(cursor.getString(cursor.getColumnIndex("login")));
+                Usuario1.setDataSessao(cursor.getString(cursor.getColumnIndex("dataSessao")));
                 Usuarios.add(Usuario1);
             }while (cursor.moveToNext());
         }

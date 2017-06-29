@@ -34,8 +34,8 @@ public class Home extends AppCompatActivity
     private DataBase dataBase;
     private SQLiteDatabase conn;
     private TextView textViewNome;
-    final Activity activity = this;
-    Sessao sessao = new Sessao();
+    private TextView textQuant;
+    Sessao sessao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,7 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        sessao = new Sessao();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +60,10 @@ public class Home extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         textViewNome = (TextView) findViewById(R.id.textViewNome);
+        textQuant = (TextView) findViewById(R.id.textQuant);
         textViewNome.setText(sessao.getUsuario().getNome());
+        textQuant.setText(String.valueOf(sessao.getQuantScan()));
+
 
 
 
@@ -139,33 +143,12 @@ public class Home extends AppCompatActivity
         return true;
     }
 
-    public void scan(View view){
-        IntentIntegrator integrator = new IntentIntegrator(activity);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
-        integrator.setPrompt("Scan");
-        integrator.setCameraId(0);
-        integrator.setBeepEnabled(false);
-        integrator.setBarcodeImageEnabled(false);
-        integrator.initiateScan();
+
+    public void escanear(View view){
+        Intent escanear = new Intent(this, Escaneamento.class);
+        startActivity(escanear);
     }
 
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result != null) {
-            if(result.getContents() == null) {
-                Log.d("MainActivity", "Cancelled scan");
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-            } else {
-                Log.d("MainActivity", "Scanned");
-                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-            }
-        } else {
-            // This is important, otherwise the result will not be passed to the fragment
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
 
 
 }

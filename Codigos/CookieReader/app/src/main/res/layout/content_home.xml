@@ -46,9 +46,18 @@
         android:id="@+id/btnEscanear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageView2"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="9dp"
-        android:onClick="scan"
+        android:layout_marginBottom="52dp"
+        android:onClick="escanear"
         android:text="Escanear Biscoito" />
+
+    <TextView
+        android:id="@+id/textQuant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textViewNome"
+        android:layout_alignRight="@+id/textViewNome"
+        android:layout_alignTop="@+id/imageView2"
+        android:text="TextView" />
 </RelativeLayout>

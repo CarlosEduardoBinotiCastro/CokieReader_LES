@@ -1,6 +1,18 @@
 package com.example.usuario.cookiereader.domain;
 
-public class DCNTpeso {
+public class DCNTpeso implements Comparable<DCNTpeso>{
+
+    @Override
+    public int compareTo(DCNTpeso dcnTpeso) {
+        //implementação
+        if (this.peso > dcnTpeso.getPeso()) {
+            return -1;
+        }
+        if (this.peso < dcnTpeso.getPeso()) {
+            return 1;
+        }
+        return 0;
+    }
 
 	private int peso;
 

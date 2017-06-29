@@ -36,6 +36,7 @@ public class ScriptSQL {
                   "  login            TEXT  NOT NULL, " +
                   "  senha            TEXT  NOT NULL, " +
                   "  cpf              TEXT  NOT NULL, " +
+                  "  dataSessao       DATETIME, " +
                   "  cdCidade         INTEGER NOT NULL);";
 
           return sql;
@@ -114,6 +115,7 @@ public class ScriptSQL {
                   "  dataHora       DATETIME         NOT NULL, " +
                   "  cdDcnt         INTEGER      NOT NULL, " +
                   "  cdBiscoito     INTEGER      NOT NULL, " +
+                  "  favorito       INTEGER      NOT NULL, " +
                   "  cdUsuario      INTEGER      NOT NULL);";
 
           return sql;

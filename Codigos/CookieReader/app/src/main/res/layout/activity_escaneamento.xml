@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.usuario.cookiereader.control.Escaneamento">
+
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:text="Escaneamento Rapido"
+        android:textSize="19sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/spinDoenca"
+        android:layout_alignStart="@+id/spinDoenca" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView15"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:onClick="voltar"
+        android:text="Voltar"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:text="Selecione uma Doença: "
+        android:textSize="18sp"
+        android:layout_below="@+id/textView15"
+        android:layout_alignLeft="@+id/textView15"
+        android:layout_alignStart="@+id/textView15" />
+
+    <Spinner
+        android:id="@+id/spinDoenca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView16"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp" />
+
+    <Button
+        android:id="@+id/btnEscanear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spinDoenca"
+        android:layout_marginTop="11dp"
+        android:onClick="scan"
+        android:text="Escanear" />
+
+    <TextView
+        android:id="@+id/nomeBiscoito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView16"
+        android:layout_alignStart="@+id/textView16"
+        android:layout_centerVertical="true"
+        android:text="Nome Biscoito"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/empresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nomeBiscoito"
+        android:layout_alignStart="@+id/nomeBiscoito"
+        android:layout_below="@+id/nomeBiscoito"
+        android:layout_marginTop="25dp"
+        android:text="Empresa"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/empresa"
+        android:layout_alignStart="@+id/empresa"
+        android:layout_below="@+id/empresa"
+        android:layout_marginTop="28dp"
+        android:text="Nutrientes"
+        android:textSize="16sp" />
+
+    <ListView
+        android:id="@+id/listNutri"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView19"
+        android:layout_marginTop="22dp" />
+
+    <TextView
+        android:id="@+id/sugestao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sugestão"
+        android:textSize="18sp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
+        android:layout_alignTop="@+id/empresa"
+        android:layout_toRightOf="@+id/textView15"
+        android:layout_toEndOf="@+id/textView15" />
+</RelativeLayout>
