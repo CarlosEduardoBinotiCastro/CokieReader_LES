@@ -65,7 +65,7 @@ public class UsuarioDAO {
     public Usuario buscar(int Usuario){
         Usuario Usuario1 = new Usuario();
 
-        Cursor cursor = conn.rawQuery("select * from Usuario where _cdUsuario = '"+Integer.toString(Usuario)+"'", null);
+        Cursor cursor = conn.rawQuery("select * from Usuario where _cdUsuario = '"+String.valueOf(Usuario)+"'", null);
         if(cursor.moveToFirst()) {
             Usuario1.setCdUsuario(cursor.getInt(cursor.getColumnIndex("_cdUsuario")));
             Usuario1.setNome(cursor.getString(cursor.getColumnIndex("nome")));
@@ -74,10 +74,19 @@ public class UsuarioDAO {
             Usuario1.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
             Usuario1.setLogin(cursor.getString(cursor.getColumnIndex("login")));
             Usuario1.setDataSessao(cursor.getString(cursor.getColumnIndex("dataSessao")));
+            Usuario1.setQuantEscaneamento(cursor.getInt(cursor.getColumnIndex("quantEscaneamento")));
         }
         return  Usuario1;
     }
 
+
+    public void atualizarQuantEscaneamento(int quant, int cdUsuario){
+        ContentValues values = new ContentValues();
+
+        values.put("quantEscaneamento", quant);
+
+        conn.update("usuario", values,  " _cdUsuario = ? ", new String[]{ String.valueOf(cdUsuario) } );
+    }
 
     public List<Usuario> BuscarTodos(){
         try{
@@ -105,6 +114,7 @@ public class UsuarioDAO {
                 Usuario1.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
                 Usuario1.setLogin(cursor.getString(cursor.getColumnIndex("login")));
                 Usuario1.setDataSessao(cursor.getString(cursor.getColumnIndex("dataSessao")));
+                Usuario1.setQuantEscaneamento(cursor.getInt(cursor.getColumnIndex("quantEscaneamento")));
                 Usuarios.add(Usuario1);
             }while (cursor.moveToNext());
         }

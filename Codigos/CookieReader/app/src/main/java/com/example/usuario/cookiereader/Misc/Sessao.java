@@ -10,7 +10,7 @@ import com.example.usuario.cookiereader.domain.Usuario;
 
 public class Sessao {
     private static Usuario usuario;
-    private static Integer quantScan;
+
 
     public void logado(Usuario logado){
         this.usuario = logado;
@@ -20,11 +20,4 @@ public class Sessao {
         return usuario;
     }
 
-    public Integer getQuantScan() {
-        return quantScan;
-    }
-
-    public void setQuantScan(Integer quantScan) {
-        Sessao.quantScan = quantScan;
-    }
 }

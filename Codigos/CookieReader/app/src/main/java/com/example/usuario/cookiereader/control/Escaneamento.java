@@ -20,6 +20,7 @@ import com.example.usuario.cookiereader.DAO.DcntDAO;
 import com.example.usuario.cookiereader.DAO.DcntPesoDAO;
 import com.example.usuario.cookiereader.DAO.EmpresaDAO;
 import com.example.usuario.cookiereader.DAO.ScanDAO;
+import com.example.usuario.cookiereader.DAO.UsuarioDAO;
 import com.example.usuario.cookiereader.Misc.Sessao;
 import com.example.usuario.cookiereader.R;
 import com.example.usuario.cookiereader.database.DataBase;
@@ -29,6 +30,7 @@ import com.example.usuario.cookiereader.domain.DCNTpeso;
 import com.example.usuario.cookiereader.domain.Empresa;
 import com.example.usuario.cookiereader.domain.Nutrientes;
 import com.example.usuario.cookiereader.domain.Scan;
+import com.example.usuario.cookiereader.domain.Usuario;
 import com.example.usuario.cookiereader.domain.dcnt;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -139,7 +141,10 @@ public class Escaneamento extends AppCompatActivity {
     public void buscarBiscoitoDoenca(){
         BiscoitoDAO biscoitoDAO = new BiscoitoDAO(conn);
         biscoito = biscoitoDAO.buscarPorBarras(barras);
-        if(sessao.getQuantScan() > 0) {
+        UsuarioDAO usuarioDAO = new UsuarioDAO(conn);
+        Usuario user = usuarioDAO.buscar(sessao.getUsuario().getCdUsuario());
+        int quantEscaneamento = user.getQuantEscaneamento();
+        if(quantEscaneamento > 0) {
             if (biscoito != null) {
                 BiscoitoNutrienteDAO biscoitoNutrienteDAO = new BiscoitoNutrienteDAO(conn);
                 biscoitoNutrientes = biscoitoNutrienteDAO.BuscarTodos(biscoito.getCdBiscoito());
@@ -152,8 +157,9 @@ public class Escaneamento extends AppCompatActivity {
                 textEmpresa.setText(empresa.getNome());
 
                 pesos = pesoDAO.BuscarTodos(dcnt.getCdDcnt());
+                usuarioDAO.atualizarQuantEscaneamento(quantEscaneamento-1, sessao.getUsuario().getCdUsuario());
                 meSugira();
-                sessao.setQuantScan(8);
+
             } else {
                 Toast.makeText(Escaneamento.this, "Biscoito não encontrado", Toast.LENGTH_SHORT).show();
             }

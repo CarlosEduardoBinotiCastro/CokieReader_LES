@@ -14,7 +14,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".control.Home"
@@ -28,7 +27,11 @@
         <activity android:name=".control.UsuarioCadastro" />
         <activity android:name=".control.BiscoitoCadastro" />
         <activity android:name=".control.AssociarPesoDcnt" />
-        <activity android:name=".control.Escaneamento" android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".control.Escaneamento"
+            android:screenOrientation="portrait" />
+        <activity android:name=".control.ListarEmpresas" />
+        <activity android:name=".control.ListarEscaneamentos"></activity>
     </application>
 
 </manifest>

@@ -50,4 +50,9 @@ public class Scan {
     public void setFavorito(Integer favorito) {
         this.favorito = favorito;
     }
+
+    @Override
+    public String toString() {
+        return "cd do biscoito / "+String.valueOf(cdBiscoito);
+    }
 }

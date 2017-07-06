@@ -18,6 +18,8 @@ public class Usuario {
 
     private String dataSessao;
 
+    private int  quantEscaneamento;
+
     public int getCdUsuario() {
         return cdUsuario;
     }
@@ -72,6 +74,14 @@ public class Usuario {
 
     public void setDataSessao(String dataSessao) {
         this.dataSessao = dataSessao;
+    }
+
+    public int getQuantEscaneamento() {
+        return quantEscaneamento;
+    }
+
+    public void setQuantEscaneamento(int quantEscaneamento) {
+        this.quantEscaneamento = quantEscaneamento;
     }
 
     @Override

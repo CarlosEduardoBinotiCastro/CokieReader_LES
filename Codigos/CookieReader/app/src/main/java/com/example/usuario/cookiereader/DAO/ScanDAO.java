@@ -37,27 +37,38 @@ public class ScanDAO {
 
     public void excluir(int cdDcnt, int cdNutriente)
     {
-        conn.delete("Scan","cdDcnt=? and cdNutriente=?",new String[]{String.valueOf(cdDcnt),String.valueOf(cdNutriente)});
+        conn.delete("ScanBiscoito","cdDcnt=? and cdNutriente=?",new String[]{String.valueOf(cdDcnt),String.valueOf(cdNutriente)});
     }
 
     public void alterar(Scan Scan)
     {
         ContentValues values = preencheContentValues(Scan);
-        conn.update("Scan", values, "cdDcnt = ? ", new String[]{ String.valueOf( Scan.getCdDcnt()) } );
+        conn.update("ScanBiscoito", values, "cdDcnt = ? ", new String[]{ String.valueOf( Scan.getCdDcnt()) } );
 
     }
 
     public void inserir(Scan Scan)
     {
         ContentValues values = preencheContentValues(Scan);
-        conn.insert("Scan", null, values);
+        conn.insert("ScanBiscoito", null, values);
     }
 
 
 
     public List<Scan> BuscarTodos(int cdUsuario){
         try{
-            return toList(conn.rawQuery("select * from Scan where cdDcnt = '"+cdUsuario+"'", null), conn);
+            return toList(conn.rawQuery("select * from ScanBiscoito where cdDcnt = '"+cdUsuario+"'", null), conn);
+
+        }catch (Exception ex){
+            conn.close();
+            return null;
+        }
+
+    }
+
+    public List<Scan> BuscarTodosUsuario(int cdUsuario){
+        try{
+            return toList(conn.rawQuery("select * from ScanBiscoito where cdUsuario = '"+String.valueOf(cdUsuario)+"'", null), conn);
 
         }catch (Exception ex){
             conn.close();

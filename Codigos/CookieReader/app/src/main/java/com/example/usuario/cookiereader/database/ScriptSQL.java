@@ -36,6 +36,7 @@ public class ScriptSQL {
                   "  login            TEXT  NOT NULL, " +
                   "  senha            TEXT  NOT NULL, " +
                   "  cpf              TEXT  NOT NULL, " +
+                  "  quantEscaneamento              INTEGER, " +
                   "  dataSessao       DATETIME, " +
                   "  cdCidade         INTEGER NOT NULL);";
 

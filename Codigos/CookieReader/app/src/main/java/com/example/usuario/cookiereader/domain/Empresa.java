@@ -11,6 +11,8 @@ public class Empresa {
 
 	private int cdCidade;
 
+    private int scans = 0;
+
     public int getCdEmpresa() {
         return cdEmpresa;
     }
@@ -35,9 +37,18 @@ public class Empresa {
         this.cdCidade = cdCidade;
     }
 
+    public void setScans(int quant){
+        scans = quant;
+    }
+
     @Override
     public String toString(){
+        if(scans > 0){
+            return this.getNome() + " / " + " Total: "+ String.valueOf(scans);
+        }else{
             return this.getNome();
+        }
+
     } 
     
 }

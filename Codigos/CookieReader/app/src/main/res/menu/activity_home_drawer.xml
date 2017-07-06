@@ -2,6 +2,16 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:title="Listagens">
+        <menu>
+            <item
+                android:id="@+id/nav_listarEmpresa"
+                android:title="Listar Empresas" />
+            <item
+                android:id="@+id/nav_listarEscaneamentos"
+                android:title="Listar Escaneamentos" />
+        </menu>
+    </item>
     <item android:title="Casos De Uso">
         <menu>
             <item

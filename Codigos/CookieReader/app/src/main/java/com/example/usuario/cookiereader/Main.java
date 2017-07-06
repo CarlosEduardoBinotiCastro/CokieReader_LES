@@ -95,7 +95,7 @@ public class Main extends AppCompatActivity {
                             dateFormat.setTimeZone(cal.getTimeZone());
                             user.setDataSessao(dateFormat.format(cal.getTime()));
                             usuarioDAO.alterarData(user);
-                            sessao.setQuantScan(10);
+                            usuarioDAO.atualizarQuantEscaneamento(10,user.getCdUsuario());
                         }else{
 
                         }
@@ -104,7 +104,7 @@ public class Main extends AppCompatActivity {
                         dateFormat.setTimeZone(cal.getTimeZone());
                         user.setDataSessao(dateFormat.format(cal.getTime()));
                         usuarioDAO.alterarData(user);
-                        sessao.setQuantScan(10);
+                        usuarioDAO.atualizarQuantEscaneamento(10,user.getCdUsuario());
                     }
 
 

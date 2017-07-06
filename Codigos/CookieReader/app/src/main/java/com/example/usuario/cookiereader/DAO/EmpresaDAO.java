@@ -16,6 +16,7 @@ import java.util.List;
 public class EmpresaDAO {
 
     private SQLiteDatabase conn;
+    private Boolean teste = false;
 
     public EmpresaDAO(SQLiteDatabase conn){
         this.conn = conn;
@@ -31,6 +32,18 @@ public class EmpresaDAO {
 
         return values;
 
+    }
+
+
+    public List<Empresa> buscarPorScan(){
+        teste = true;
+        try{
+            return toList(conn.rawQuery("select e._cdEmpresa, e.nome, e.cdCidade, COUNT(*) as total from Empresa e, ScanBiscoito s, Biscoito b WHERE s.cdBiscoito = b._cdBiscoito AND b.cdEmpresa = e._cdEmpresa GROUP BY e._cdEmpresa ORDER BY total DESC;", null), conn);
+
+        }catch (Exception ex){
+            conn.close();
+            return null;
+        }
     }
 
     public void excluir(int id)
@@ -83,6 +96,9 @@ public class EmpresaDAO {
                 Empresa.setCdEmpresa(cursor.getInt(cursor.getColumnIndex("_cdEmpresa")));
                 Empresa.setCdCidade(cursor.getInt(cursor.getColumnIndex("cdCidade")));
                 Empresa.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+                if(teste){
+                    Empresa.setScans(cursor.getInt(cursor.getColumnIndex("total")));
+                }
                 Empresas.add(Empresa);
             }while (cursor.moveToNext());
         }

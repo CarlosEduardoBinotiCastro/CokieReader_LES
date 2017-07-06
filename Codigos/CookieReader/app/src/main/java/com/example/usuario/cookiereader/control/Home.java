@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.usuario.cookiereader.DAO.UsuarioDAO;
 import com.example.usuario.cookiereader.Misc.FirstLogin;
 import com.example.usuario.cookiereader.Misc.Sessao;
 import com.example.usuario.cookiereader.R;
@@ -44,6 +45,8 @@ public class Home extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         sessao = new Sessao();
+        dataBase = new DataBase(this);
+        conn = dataBase.getWritableDatabase();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +65,9 @@ public class Home extends AppCompatActivity
         textViewNome = (TextView) findViewById(R.id.textViewNome);
         textQuant = (TextView) findViewById(R.id.textQuant);
         textViewNome.setText(sessao.getUsuario().getNome());
-        textQuant.setText(String.valueOf(sessao.getQuantScan()));
+        UsuarioDAO usuarioDAO = new UsuarioDAO(conn);
+        Usuario usuario = usuarioDAO.buscar(sessao.getUsuario().getCdUsuario());
+        textQuant.setText(String.valueOf(usuario.getQuantEscaneamento()));
 
 
 
@@ -136,6 +141,12 @@ public class Home extends AppCompatActivity
         }else if (id == R.id.nav_peso) {
             Intent peso = new Intent(this, AssociarPesoDcnt.class);
             startActivity(peso);
+        }else if (id == R.id.nav_listarEmpresa) {
+            Intent empresa = new Intent(this, ListarEmpresas.class);
+            startActivity(empresa);
+        }if (id == R.id.nav_listarEscaneamentos){
+            Intent scan = new Intent(this, ListarEscaneamentos.class);
+            startActivity(scan);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
